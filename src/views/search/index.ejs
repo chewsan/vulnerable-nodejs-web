@@ -1,0 +1,46 @@
+
+<section class="panel">
+  <h1>Customer Search</h1>
+  <p>This module demonstrates a blind SQL injection-style search flow.</p>
+
+  <form method="get" action="/search/customers" class="form form-inline">
+    <label>Search term
+      <input type="text" name="q" value="<%= query %>">
+    </label>
+    <label>
+      <input type="checkbox" name="slow" value="1">
+      Add artificial delay
+    </label>
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (info) { %>
+    <div class="alert alert-info"><%= info %></div>
+  <% } %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% results.forEach(function(c) { %>
+        <tr>
+          <td><%= c.id %></td>
+          <td><%= c.name %></td>
+          <td><%= c.email %></td>
+          <td><%= c.department %></td>
+          <td><%= c.status %></td>
+          <td><%= c.created_at %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+

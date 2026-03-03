@@ -1,0 +1,57 @@
+
+<section class="panel">
+  <h1>File Center</h1>
+  <p>Upload and explore files. Dangerous behavior is simulated and sandboxed.</p>
+
+  <% if (message) { %>
+    <div class="alert alert-success"><%= message %></div>
+  <% } %>
+  <% if (rceBanner) { %>
+    <div class="alert alert-warning"><%= rceBanner %></div>
+  <% } %>
+
+  <h2>Upload</h2>
+  <form method="post" action="/files/upload" enctype="multipart/form-data" class="form">
+    <label>Choose file
+      <input type="file" name="file" required>
+    </label>
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Uploaded Files</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Original name</th>
+        <th>MIME type</th>
+        <th>Size</th>
+        <th>Uploader</th>
+        <th>When</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% files.forEach(function(f) { %>
+        <tr>
+          <td><a href="/files/view/<%= f.id %>"><%= f.id %></a></td>
+          <td><%= f.original_name %></td>
+          <td><%= f.mime_type %></td>
+          <td><%= f.size %></td>
+          <td><%= f.uploader %></td>
+          <td><%= f.created_at %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h2>Sandbox File Preview</h2>
+  <form method="get" action="/files/sandbox-preview" class="form form-inline">
+    <label>Sandbox-relative path
+      <input type="text" name="file" placeholder="e.g. exports/finance.csv">
+    </label>
+    <button type="submit">Preview</button>
+  </form>
+
+  <p class="muted">Only files under <code>./data/sandbox</code> are accessible here. Attempts to escape this directory are blocked.</p>
+</section>
+

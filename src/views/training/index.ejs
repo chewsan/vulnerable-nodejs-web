@@ -1,0 +1,35 @@
+
+<section class="panel">
+  <h1>Training Notes</h1>
+  <p>This page summarizes modules and learning objectives without providing exploit strings.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Module</th>
+        <th>Entry point</th>
+        <th>Learning objectives</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% modules.forEach(function(m) { %>
+        <tr>
+          <td><%= m.name %></td>
+          <td><a href="<%= m.path %>"><%= m.path %></a></td>
+          <td>
+            <ul>
+              <% m.objectives.forEach(function(o) { %>
+                <li><%= o %></li>
+              <% }) %>
+            </ul>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <p class="muted">
+    Trainers can extend these notes in <code>docs/trainer-guide.md</code> with scenario plans, discussion prompts, and debrief questions.
+  </p>
+</section>
+

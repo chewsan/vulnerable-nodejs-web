@@ -1,0 +1,36 @@
+
+<section class="panel">
+  <h1>Ticket Review (Admin)</h1>
+  <p>This page intentionally renders stored content to illustrate blind XSS risks.</p>
+
+  <form method="post" action="/bot/review-tickets">
+    <button type="submit">Run simulated review bot</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Reporter</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Content (unsafe)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach(function(t) { %>
+        <tr>
+          <td><%= t.id %></td>
+          <td><%= t.reporter_name %></td>
+          <td><%= t.title %></td>
+          <td><%= t.status %></td>
+          <td><%= t.created_at %></td>
+          <!-- INTENTIONALLY UNSAFE: using unescaped output to demonstrate stored XSS risk -->
+          <td><%- t.content %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+

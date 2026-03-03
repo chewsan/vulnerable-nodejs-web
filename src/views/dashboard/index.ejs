@@ -1,0 +1,57 @@
+
+<section class="grid">
+  <div class="card">
+    <h2>Recent Tickets</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>When</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% recentTickets.forEach(function(t) { %>
+          <tr>
+            <td><a href="/tickets/view/<%= t.id %>"><%= t.id %></a></td>
+            <td><%= t.title %></td>
+            <td><%= t.status %></td>
+            <td><%= t.created_at %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <p><a href="/tickets/submit">Submit new ticket</a> | <% if (isAdmin) { %><a href="/tickets/admin">Admin review</a><% } %></p>
+  </div>
+
+  <div class="card">
+    <h2>Internal Messages</h2>
+    <ul>
+      <% recentMessages.forEach(function(m) { %>
+        <li><strong><%= m.subject %></strong> <span class="muted">(<%= m.created_at %>)</span></li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Uploads Summary</h2>
+    <p>Total uploads: <strong><%= uploadSummary.count %></strong></p>
+    <p>Total size (approx bytes): <strong><%= uploadSummary.totalSize %></strong></p>
+    <p><a href="/files">Go to File Center</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Recent Audit Events</h2>
+    <ul>
+      <% recentAudit.forEach(function(a) { %>
+        <li>
+          <span class="tag"><%= a.event_type %></span>
+          <span><%= a.details %></span>
+          <span class="muted">(<%= a.created_at %>)</span>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+

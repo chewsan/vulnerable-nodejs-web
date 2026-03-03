@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %> - Insecure Lab</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <span class="app-name">Insecure Training Portal</span>
+      <span class="env-banner danger"><%= warningBanner %></span>
+    </div>
+    <div class="top-bar-right">
+      <% if (currentUser) { %>
+        <span class="user-label">User: <strong><%= currentUser.username %></strong> (<%= currentUser.role %>)</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/training">Training notes</a>
+        <% if (isAdmin) { %>
+          <a href="/debug/config">Debug config</a>
+          <a href="/tickets/admin">Ticket review</a>
+        <% } %>
+        <a href="/auth/logout">Logout</a>
+      <% } else { %>
+        <span class="user-label">Not logged in</span>
+      <% } %>
+    </div>
+  </header>
+
+  <main class="main">
+    <%- body %>
+  </main>
+
+  <footer class="footer">
+    <span>Lab mode only • Do not expose publicly • <a href="/training">Training notes</a></span>
+  </footer>
+</body>
+</html>
+

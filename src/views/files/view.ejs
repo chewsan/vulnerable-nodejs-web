@@ -1,0 +1,12 @@
+
+<section class="panel">
+  <h1>File #<%= file.id %></h1>
+  <p><strong>Original name:</strong> <%= file.original_name %></p>
+  <p><strong>Stored name:</strong> <%= file.stored_name %></p>
+  <p><strong>MIME:</strong> <%= file.mime_type %></p>
+  <p><strong>Size:</strong> <%= file.size %> bytes</p>
+  <p><strong>Uploader:</strong> <%= file.uploader %></p>
+  <p><strong>Created:</strong> <%= file.created_at %></p>
+  <p><strong>Note:</strong> <%= file.note || '(none)' %></p>
+</section>
+

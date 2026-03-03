@@ -1,0 +1,32 @@
+
+<section class="panel">
+  <h1>Simulated Review Bot</h1>
+  <p>This feature scans pending tickets and logs where payloads would have executed.</p>
+
+  <p><strong>Pending tickets:</strong> <%= pending.length %></p>
+  <p><strong>Findings logged:</strong> <%= findings %></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Reporter</th>
+        <th>Title</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pending.forEach(function(t) { %>
+        <tr>
+          <td><%= t.id %></td>
+          <td><%= t.reporter_name %></td>
+          <td><%= t.title %></td>
+          <td><%= t.created_at %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <p class="muted">Check the app log file for JSON entries marked BOT_REVIEW or BOT_REVIEW_FINDING.</p>
+</section>
+

@@ -1,0 +1,46 @@
+<section class="panel">
+  <h1>Login</h1>
+  <p>This is an intentionally weak authentication flow for training only.</p>
+
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form method="post" action="/auth/login" class="form">
+    <label>Username
+      <input type="text" name="username" required>
+    </label>
+    <label>Password
+      <input type="password" name="password" required>
+    </label>
+    <button type="submit">Login</button>
+  </form>
+
+  <details class="lab-hint">
+    <summary>Lab-only: experimental insecure login path</summary>
+    <p>This extra form demonstrates how small logic branches can weaken authentication.</p>
+    <form method="post" action="/auth/lab-insecure-login" class="form">
+      <label>Username
+        <input type="text" name="username" required>
+      </label>
+      <label>Password (may be ignored on some paths)
+        <input type="password" name="password">
+      </label>
+      <label>
+        <input type="checkbox" name="fastPath" value="1">
+        Try alternate "fast path" branch (intentionally unsafe)
+      </label>
+      <button type="submit">Use insecure path</button>
+    </form>
+  </details>
+
+  <section class="panel-subtle">
+    <h2>Default lab users</h2>
+    <ul>
+      <li>alice</li>
+      <li>bob</li>
+      <li>admin</li>
+    </ul>
+  </section>
+</section>
+

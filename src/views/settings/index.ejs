@@ -1,0 +1,50 @@
+
+<section class="panel">
+  <h1>Settings & Internal Notes</h1>
+  <p>This page intentionally mixes configuration-style content with internal notes.</p>
+
+  <% if (message) { %>
+    <div class="alert alert-success"><%= message %></div>
+  <% } %>
+
+  <h2>New Note</h2>
+  <form method="post" action="/settings/notes" class="form">
+    <label>Title
+      <input type="text" name="title" required>
+    </label>
+    <label>Body (unsafe rendering)
+      <textarea name="body" rows="5" required></textarea>
+    </label>
+    <button type="submit">Save note</button>
+  </form>
+
+  <p class="muted">
+    This form intentionally omits CSRF protection and safely-encoded output to enable stored XSS training.
+  </p>
+
+  <h2>Existing Notes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Owner</th>
+        <th>When</th>
+        <th>Preview (unsafe)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% notes.forEach(function(n) { %>
+        <tr>
+          <td><a href="/settings/notes/<%= n.id %>"><%= n.id %></a></td>
+          <td><%= n.title %></td>
+          <td><%= n.owner %></td>
+          <td><%= n.created_at %></td>
+          <!-- INTENTIONALLY UNSAFE: unescaped body preview -->
+          <td><%- n.body.substring(0, 80) %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+

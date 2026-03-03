@@ -1,0 +1,20 @@
+[Unit]
+Description=Intentionally Insecure Node.js Lab (Localhost Only)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/vulnerable-nodejs-web
+Environment=NODE_ENV=development
+Environment=LAB_MODE=true
+Environment=HOST=127.0.0.1
+Environment=PORT=3000
+Environment=ALLOW_REMOTE=false
+Environment=I_UNDERSTAND_THIS_IS_AN_INSECURE_LAB=no
+Environment=DB_PATH=./data/app.db
+ExecStart=/usr/bin/node src/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

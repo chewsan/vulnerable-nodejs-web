@@ -1,0 +1,7 @@
+node_modules
+data/app.db
+data/logs/*
+data/uploads/*
+*.log
+.env
+

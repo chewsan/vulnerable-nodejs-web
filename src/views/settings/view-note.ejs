@@ -1,0 +1,11 @@
+
+<section class="panel">
+  <h1>Note #<%= note.id %></h1>
+  <p><strong>Title:</strong> <%= note.title %></p>
+  <p><strong>Owner:</strong> <%= note.owner %></p>
+  <p><strong>Created:</strong> <%= note.created_at %></p>
+  <hr>
+  <!-- INTENTIONALLY UNSAFE: unescaped body render for stored XSS training -->
+  <div class="note-body"><%- note.body %></div>
+</section>
+

@@ -1,0 +1,25 @@
+
+<section class="panel">
+  <h1>Public Support Ticket</h1>
+  <p>This form intentionally stores raw content for blind XSS-style training.</p>
+
+  <% if (message) { %>
+    <div class="alert alert-success"><%= message %></div>
+  <% } %>
+
+  <form method="post" action="/tickets/submit" class="form">
+    <label>Your name
+      <input type="text" name="name" placeholder="Optional">
+    </label>
+    <label>Title
+      <input type="text" name="title" required>
+    </label>
+    <label>Details
+      <textarea name="content" rows="6" required></textarea>
+    </label>
+    <button type="submit">Submit ticket</button>
+  </form>
+
+  <p class="muted">Tickets are queued for admin review and not shown back here, to simulate a blind scenario.</p>
+</section>
+

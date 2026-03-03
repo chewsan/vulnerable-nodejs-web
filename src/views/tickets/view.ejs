@@ -1,0 +1,12 @@
+
+<section class="panel">
+  <h1>Ticket #<%= ticket.id %></h1>
+  <p><strong>Title:</strong> <%= ticket.title %></p>
+  <p><strong>Status:</strong> <%= ticket.status %></p>
+  <p><strong>Reporter:</strong> <%= ticket.reporter_name %></p>
+  <p><strong>Created:</strong> <%= ticket.created_at %></p>
+  <hr>
+  <p><strong>Details:</strong></p>
+  <pre><%= ticket.content %></pre>
+</section>
+

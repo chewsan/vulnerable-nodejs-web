@@ -1,0 +1,30 @@
+{
+  "name": "intentionally-insecure-nodejs-lab",
+  "version": "1.0.0",
+  "description": "Sandboxed intentionally vulnerable Node.js web app for internal security training and demonstrations.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "seed": "node src/db/seed.js"
+  },
+  "keywords": [
+    "security",
+    "training",
+    "ctf",
+    "owasp",
+    "lab"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^9.0.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.9",
+    "express": "^4.19.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.0",
+    "moment": "^2.30.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
